@@ -202,33 +202,74 @@ reverse(a);
 //     btn2.style.display = 'none';
 //     console.log('这是一个按钮！');
 // }
-let textInput = document.querySelector('.textInput');
-textInput.onfocus = function() {
-    // 得到焦点
-    if (this.value === '阿伟死了！') {
-        this.value = '';
-        this.style.borderColor = 'pink';
+// let textInput = document.querySelector('.textInput');
+// textInput.onfocus = function() {
+//     // 得到焦点
+//     if (this.value === '阿伟死了！') {
+//         this.value = '';
+//         this.style.borderColor = 'pink';
+//     }
+// }
+// textInput.onblur = function() {
+//     // 失去焦点
+//     if (this.value === '') {
+//         this.value = '阿伟死了！';
+//         this.style.borderColor = 'blue';
+//     }
+// }
+
+// let tabels = document.querySelector('tbody tr');
+
+// for (let i = 0; i < tabels.length; i++) {
+//     tabels[i].onmouseover = function() {
+//         this.style.borderColor = 'blue';
+//         console.log('jskka');
+//     }
+// }
+
+// let arr = new Array(12, 12, 33, 12, 12, 32, 4, 333);
+
+// alert(arr.push(12));
+// alert(Array.isArray(arr));
+// alert(arr.toString());
+
+
+let j_cbAll = document.getElementById('j_cbAll');
+let j_tbs = document.getElementById('j_tb').getElementsByTagName('input');
+var tb_tr = document.getElementById('j_tb').getElementsByTagName('tr');
+// 注册事件
+j_cbAll.onclick = function() {
+    for (let i = 0; i < j_tbs.length; i++) {
+        j_tbs[i].checked = this.checked;
     }
 }
-textInput.onblur = function() {
-    // 失去焦点
-    if (this.value === '') {
-        this.value = '阿伟死了！';
-        this.style.borderColor = 'blue';
+
+for (let i = 0; i < j_tbs.length; i++) { //为每个j_tbs中的复选框注册点击事件
+    j_tbs[i].onclick = function() {
+        let temp = true; //状态控制元素
+        for (let j = 0; j < j_tbs.length; j++) { //遍历每个复选框
+            if (!j_tbs[j].checked) {
+                temp = false;
+            }
+        }
+        j_cbAll.checked = temp;
     }
 }
 
-let tabels = document.querySelector('tbody tr');
-
-for (let i = 0; i < tabels.length; i++) {
-    tabels[i].onmouseover = function() {
-        this.style.borderColor = 'blue';
-        console.log('jskka');
+for (var i = 0; i < tb_tr.length; i++) {
+    tb_tr[i].onmouseover = function() {
+        //this.className = 'clickTr';
+        this.className = 'clickTr';
+    }
+    tb_tr[i].onmouseout = function() {
+        this.className = '';
     }
 }
 
-let arr = new Array(12, 12, 33, 12, 12, 32, 4, 333);
-
-alert(arr.push(12));
-alert(Array.isArray(arr));
-alert(arr.toString());
+//闭包
+function wait(message) {
+    setTimeout(function timer() {
+        console.log(message);
+    }, 1000);
+}
+wait('Hello,closure!');

@@ -17,3 +17,7 @@ table {
     border-style: solid;
     border-color: aqua;
 }
+
+.clickTr {
+    background-color: pink;
+}
